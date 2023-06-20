@@ -1,0 +1,43 @@
+{
+    "name": "namah",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "npx tsc",
+        "start": "node --loader ts-node/esm src/index.ts",
+        "dev": "ts-node-dev --no-notify src/index.ts"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "_moduleAliases": {
+        "@models": "src/models/index.ts",
+        "@routes": "src/routes/index.ts",
+        "@services": "src/services/index.ts",
+        "@typing": "src/types/index.ts"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.1",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^8.5.1",
+        "morgan": "^1.10.0",
+        "mysql2": "^2.3.3",
+        "ts-node-dev": "^2.0.0"
+    },
+    "devDependencies": {
+        "@types/cookie-parser": "^1.4.3",
+        "@types/cors": "^2.8.12",
+        "@types/express": "^4.17.14",
+        "@types/jsonwebtoken": "^8.5.9",
+        "@types/morgan": "^1.9.3",
+        "@types/node": "^18.11.9",
+        "concurrently": "^7.5.0",
+        "module-alias": "^2.2.2",
+        "nodemon": "^2.0.20",
+        "typescript": "^4.8.4"
+    }
+}
