@@ -1,14 +1,14 @@
 import { Router } from "express";
 
 import auth from "./auth";
-import users from "./users";
-import posts from "./posts";
-import products from "./products";
-import podcasts from "./podcasts";
-import courses from "./courses";
 import banners from "./banners";
 import concepts from "./concetps";
+import courses from "./courses";
+import podcasts from "./podcasts";
+import posts from "./posts";
+import products from "./products";
 import search from "./search";
+import users from "./users";
 
 const router = Router();
 

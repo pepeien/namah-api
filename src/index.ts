@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 
 // Setup
 dotenv.config();
@@ -13,6 +14,19 @@ dotenv.config();
 import routes from "@routes";
 
 const app: Express = express();
+
+const dbURI = `mongodb://${
+    process.env.DATABASE_HOST.trim().length > 0 &&
+    process.env.DATABASE_PORT.trim().length > 0 &&
+    process.env.DATABASE_TABLE.trim().length > 0
+        ? `${process.env.DATABASE_HOST.trim()}:${process.env.DATABASE_PORT.trim()}/${process.env.DATABASE_TABLE.trim()}`
+        : "127.0.0.1:27017/karikariyaki"
+}`;
+
+mongoose.connect(dbURI, {
+    minPoolSize: Number(process.env.DATABASE_MIN_POOL_SIZE) ?? 5,
+    maxPoolSize: Number(process.env.DATABASE_MAX_POOL_SIZE) ?? 15,
+});
 
 const allowedDomains = process.env.ORIGIN_ADDRESS
     ? process.env.ORIGIN_ADDRESS.split(" ")
@@ -44,4 +58,4 @@ app.use(express.json());
 
 app.use("/", routes);
 
-app.listen(process.env.PORT || 9002);
+app.listen(process.env.PORT || 9010);
