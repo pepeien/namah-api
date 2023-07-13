@@ -20,7 +20,7 @@ const dbURI = `mongodb://${
     process.env.DATABASE_PORT.trim().length > 0 &&
     process.env.DATABASE_TABLE.trim().length > 0
         ? `${process.env.DATABASE_HOST.trim()}:${process.env.DATABASE_PORT.trim()}/${process.env.DATABASE_TABLE.trim()}`
-        : "127.0.0.1:27017/karikariyaki"
+        : "127.0.0.1:27017/namah"
 }`;
 
 mongoose.connect(dbURI, {
