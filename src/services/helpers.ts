@@ -10,39 +10,35 @@ export const orderObjectByKey = (unorderedObject: { [param: string]: any }) => {
 
 export const toCamelCase = (str: string) => {
     const map = {
-        a: "á|à|ã|â|À|Á|Ã|Â",
-        e: "é|è|ê|É|È|Ê",
-        i: "í|ì|î|Í|Ì|Î",
-        o: "ó|ò|ô|õ|Ó|Ò|Ô|Õ",
-        u: "ú|ù|û|ü|Ú|Ù|Û|Ü",
-        c: "ç|Ç",
-        n: "ñ|Ñ",
+        a: 'á|à|ã|â|À|Á|Ã|Â',
+        e: 'é|è|ê|É|È|Ê',
+        i: 'í|ì|î|Í|Ì|Î',
+        o: 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
+        u: 'ú|ù|û|ü|Ú|Ù|Û|Ü',
+        c: 'ç|Ç',
+        n: 'ñ|Ñ',
     };
 
     for (const pattern in map) {
-        str = str.replace(new RegExp(pattern, "g"), pattern);
+        str = str.replace(new RegExp(pattern, 'g'), pattern);
     }
 
     return str
         .replace(/([-_][a-z]|[A-Z]|)/g, (word, index) => {
             return index === 0 ? word.toLowerCase() : word.toUpperCase();
         })
-        .replace(/[^a-zA-Z]/g, "");
+        .replace(/[^a-zA-Z]/g, '');
 };
 
 export const translateObjectKeys = <T>(targetObject: T): T => {
     let newObject = {};
 
     for (const [key, value] of Object.entries(targetObject as object)) {
-        if (
-            value &&
-            typeof value === "object" &&
-            typeof value.getMonth !== "function"
-        ) {
+        if (value && typeof value === 'object' && typeof value.getMonth !== 'function') {
             newObject = {
                 ...newObject,
                 [toCamelCase(key)]: Buffer.isBuffer(value)
-                    ? value.toString("base64")
+                    ? value.toString('base64')
                     : translateObjectKeys(value),
             };
         } else {

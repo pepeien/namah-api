@@ -1,11 +1,11 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 // Types
-import { default as Endpoints } from "./enpoints";
+import { default as Endpoints } from './enpoints';
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         res.status(200).json({
             wasSuccessful: true,

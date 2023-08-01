@@ -1,5 +1,5 @@
 // Types
-import { GeneratedMysqlQuery, MysqlQueryOptions } from "../types";
+import { GeneratedMysqlQuery, MysqlQueryOptions } from '../types';
 
 export const generateQuery = ({
     request,
@@ -13,7 +13,7 @@ export const generateQuery = ({
     const queryParameters: (string | number)[] = [];
 
     let queryClauses = `SELECT ${
-        items === "" || items === null || items === undefined ? "*" : items
+        items === '' || items === null || items === undefined ? '*' : items
     } FROM ${table}`;
 
     let result: GeneratedMysqlQuery = {
@@ -26,26 +26,21 @@ export const generateQuery = ({
     }
 
     const validItem = Object.keys(request).find(
-        (element) =>
-            element !== "limit" && request && request[element] !== undefined
+        (element) => element !== 'limit' && request && request[element] !== undefined,
     );
 
     if (validItem) {
         const firstIndex = Object.keys(request).indexOf(validItem);
 
         Object.keys(request).map((element, index) => {
-            if (element === "q" && items) {
-                for (const [targetItemKey, targetItemValue] of Object.entries(
-                    items
-                )) {
-                    if (targetItemKey === "0") {
+            if (element === 'q' && items) {
+                for (const [targetItemKey, targetItemValue] of Object.entries(items)) {
+                    if (targetItemKey === '0') {
                         queryClauses =
-                            queryClauses +
-                            ` WHERE ${targetItemValue} LIKE CONCAT('%', ?, '%')`;
+                            queryClauses + ` WHERE ${targetItemValue} LIKE CONCAT('%', ?, '%')`;
                     } else {
                         queryClauses =
-                            queryClauses +
-                            ` OR ${targetItemValue} LIKE CONCAT('%', ?, '%')`;
+                            queryClauses + ` OR ${targetItemValue} LIKE CONCAT('%', ?, '%')`;
                     }
 
                     if (request && request[element]) {
@@ -53,22 +48,18 @@ export const generateQuery = ({
                     }
                 }
             } else {
-                if (
-                    element !== "limit" &&
-                    request &&
-                    request[element] !== undefined
-                ) {
+                if (element !== 'limit' && request && request[element] !== undefined) {
                     if (index === firstIndex) {
                         queryClauses =
                             queryClauses +
                             ` WHERE ${table.slice(0, -1)}_${element} LIKE ${
-                                isBinary ? "BINARY " : ""
+                                isBinary ? 'BINARY ' : ''
                             }?`;
                     } else {
                         queryClauses =
                             queryClauses +
                             ` AND ${table.slice(0, -1)}_${element} LIKE ${
-                                isBinary ? "BINARY " : ""
+                                isBinary ? 'BINARY ' : ''
                             }?`;
                     }
 
@@ -82,10 +73,10 @@ export const generateQuery = ({
 
     queryClauses = queryClauses + ` LIMIT ?`;
 
-    if (!request["limit"] || parseInt(request["limit"] as string) < 1) {
+    if (!request['limit'] || parseInt(request['limit'] as string) < 1) {
         queryParameters.push(10);
     } else {
-        queryParameters.push(parseInt(request["limit"] as string));
+        queryParameters.push(parseInt(request['limit'] as string));
     }
 
     result.text = queryClauses;

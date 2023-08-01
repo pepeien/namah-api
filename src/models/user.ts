@@ -1,7 +1,7 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 // Types
-import { Statics } from "@typing";
+import { Statics } from '@typing';
 
 const validateId = async (id: Number) => {
     const foundUser = await UserModel.find({
@@ -9,7 +9,7 @@ const validateId = async (id: Number) => {
     });
 
     if (foundUser) {
-        throw new Error("User ID is duplicated");
+        throw new Error('User ID is duplicated');
     }
 };
 

@@ -1,1 +1,1 @@
-export { Statics } from "./statics";
+export { Statics } from './statics';

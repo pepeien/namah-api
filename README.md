@@ -2,7 +2,7 @@
 
 ### tl;dr
 
- ```
+```
 git clone https://github.com/pepeien/namah-api.git
 cd namah-api/
 npm install && npm start
@@ -16,33 +16,32 @@ npm install && npm start
 
 3. These are the variables and their descriptions:
 
-| Variable       | Description  | Type           | Default | Required |
-|:--------------:|:-------------|:--------------:|:--------:|:--------:|
-| SECRET                 | Holds the salt for the `JWT` tokens             | String  | | ✅ |
-| ORIGIN_ADDRESS         | Holds the values for the allowed `cors` origins | String  | http://localhost:3000 http://localhost:8080 | |
-| DATABASE_HOST          | `MongoDB` address                               | String  | 127.0.0.1 | |
-| DATABASE_PORT          | `MongoDB` port                                  | Integer | 27017 | |
-| DATABASE_TABLE         | `MongoDB` table                                 | String  | namah | |
-| DATABASE_MIN_POOL_SIZE | `MongoDB` minimum pool size                     | Integer | 5 | |
-| DATABASE_MAX_POOL_SIZE | `MongoDB` maximum pool size                     | Integer | 15 | |
-| DATABASE_USER          | `MongoDB` address                               | String  | | |
-| DATABASE_PASSWORD      | `MongoDB` address                               | String  | | |
+|        Variable        | Description                                     |  Type   |                   Default                   | Required |
+| :--------------------: | :---------------------------------------------- | :-----: | :-----------------------------------------: | :------: |
+|         SECRET         | Holds the salt for the `JWT` tokens             | String  |                                             |    ✅    |
+|     ORIGIN_ADDRESS     | Holds the values for the allowed `cors` origins | String  | http://localhost:3000 http://localhost:8080 |          |
+|     DATABASE_HOST      | `MongoDB` address                               | String  |                  127.0.0.1                  |          |
+|     DATABASE_PORT      | `MongoDB` port                                  | Integer |                    27017                    |          |
+|     DATABASE_TABLE     | `MongoDB` table                                 | String  |                    namah                    |          |
+| DATABASE_MIN_POOL_SIZE | `MongoDB` minimum pool size                     | Integer |                      5                      |          |
+| DATABASE_MAX_POOL_SIZE | `MongoDB` maximum pool size                     | Integer |                     15                      |          |
+|     DATABASE_USER      | `MongoDB` address                               | String  |                                             |          |
+|   DATABASE_PASSWORD    | `MongoDB` address                               | String  |                                             |          |
 
 4. Value(s) for the `ORIGIN_ADDRESS`:
 
-   4.1. Example one value: `ORIGIN_ADDRESS=http://localhost:8080`
+    4.1. Example one value: `ORIGIN_ADDRESS=http://localhost:8080`
 
-   4.2. Example multiple values: `ORIGIN_ADDRESS=http://localhost:8080 http://localhost:4200`
+    4.2. Example multiple values: `ORIGIN_ADDRESS=http://localhost:8080 http://localhost:4200`
 
 ### Running with Docker CLI
 
 1. Issue `docker build -t namah-api .`;
-   
 2. Issue `docker run -dp 127.0.0.1:9002 namah-api`.
 
 ##### Requirements
 
-- [Docker](https://docs.docker.com/engine/install) (Windows, Linux, Mac)
+-   [Docker](https://docs.docker.com/engine/install) (Windows, Linux, Mac)
 
 ### Running W/O Docker
 
@@ -54,7 +53,7 @@ npm install && npm start
 
 ##### Requirements
 
-- [npm](https://nodejs.org/en/download/package-manager) (Windows, Linux, Mac)
+-   [npm](https://nodejs.org/en/download/package-manager) (Windows, Linux, Mac)
 
 ## Documentation
 

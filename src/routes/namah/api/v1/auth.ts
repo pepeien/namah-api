@@ -1,10 +1,10 @@
-import { UserModel } from "@models";
-import { Router } from "express";
-import { sign } from "jsonwebtoken";
+import { UserModel } from '@models';
+import { Router } from 'express';
+import { sign } from 'jsonwebtoken';
 
 const router = Router();
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const result = await UserModel.find({
             email: req.body.email,
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
         if (result.length === 0) {
             res.status(401).json({
                 wasSuccessful: false,
-                description: "Invalid username or password",
+                description: 'Invalid username or password',
             });
 
             return;
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
         if (!process.env.SECRET) {
             res.status(5403).json({
                 wasSuccessful: false,
-                description: "Secret not provided",
+                description: 'Secret not provided',
             });
 
             return;
@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
             expiresIn: 600,
         });
 
-        res.cookie("access_token", access_token, {
+        res.cookie('access_token', access_token, {
             httpOnly: true,
             secure: true,
         });
@@ -47,7 +47,7 @@ router.post("/", async (req, res) => {
     } catch (error) {
         res.status(500).json({
             wasSuccessful: false,
-            description: "Server error, please try again",
+            description: 'Server error, please try again',
         });
     }
 });

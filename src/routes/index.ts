@@ -1,10 +1,10 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 // Routes
-import namahEndpoint from "./namah";
+import namahEndpoint from './namah';
 
 const router = Router();
 
-router.use("/namah", namahEndpoint);
+router.use('/namah', namahEndpoint);
 
 export default router;

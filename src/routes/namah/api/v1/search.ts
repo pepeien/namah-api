@@ -1,8 +1,8 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
     res.status(200).json({
         wasSuccessful: true,
         searchResult: [],
