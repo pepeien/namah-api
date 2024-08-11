@@ -57,4 +57,4 @@ npm install && npm start
 
 ## Documentation
 
-You can reach to the [Developer Portal](https://api.ericodesu.com/#/service/namah) to a more hands-on driven information.
+You can reach to the [Developer Portal](https://api.erickfrederick.com/#/service/namah) to a more hands-on driven information.
